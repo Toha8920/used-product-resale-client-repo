@@ -1,19 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    const { id, title, yearsOfUse, sellersName, resalePrice, originalPrice, image } = product;
+    const { id, title, yearsOfUse, sellersName, resalePrice, originalPrice, category, image } = product;
     console.log(product)
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl mt-16">
             <figure><img className='w-52 h-52' src={image} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p>Resale Price:$ {resalePrice}</p>
-                <p>Original Price Price:$ {originalPrice}</p>
-                <p>Years of use: {yearsOfUse}y</p>
-                <p>Sellers: {sellersName}y</p>
+                <h2 className="card-title">{category}</h2>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Book Now</button>
+                    <button className="btn btn-primary"><Link to={`/categories/:${id}`}>Details</Link></button>
                 </div>
             </div>
         </div>
