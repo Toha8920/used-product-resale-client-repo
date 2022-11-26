@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ProductDetail = ({ productDetail }) => {
-    const { imgURL, productName } = productDetail
+const ProductDetail = ({ productDetail, setCategoryName }) => {
+    const { imgURL, productName, location, resalePrice, originalPrice, yearsOfUse } = productDetail
     console.log(productDetail)
     return (
         <div className='mt-5'>
@@ -11,7 +11,10 @@ const ProductDetail = ({ productDetail }) => {
                     <h2 className="card-title">{productName}</h2>
                     <p>If a dog chews shoes whose shoes does he choose?</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <label
+                            onClick={() => setCategoryName(productDetail)}
+                            htmlFor="booking-modal"
+                            className="btn btn-primary text-white">Book Now</label>
                     </div>
                 </div>
             </div>
