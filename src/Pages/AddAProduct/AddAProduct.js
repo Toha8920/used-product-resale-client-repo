@@ -62,22 +62,31 @@ const AddAProduct = () => {
                         })} />
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Price</span></label>
+                        <label className="label"> <span className="label-text">Resale Price</span></label>
                         <input type="number"
-                            {...register("price", {
+                            {...register("resalePrice", {
                                 required: "Price is required"
                             })}
                             className="input input-bordered w-full max-w-xs" />
-                        {errors.price && <p className='text-red-600'>{errors.price?.message}</p>}
+                        {errors.resalePrice && <p className='text-red-600'>{errors.resalePrice?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Condition Type</span></label>
                         <input type="text"
                             {...register("condition", {
-                                required: "Price is required"
+                                required: "Condition is required"
                             })}
                             className="input input-bordered w-full max-w-xs" />
                         {errors.condition && <p className='text-red-600'>{errors.condition?.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Years Of Use</span></label>
+                        <input type="Number"
+                            {...register("yearsOfUse", {
+                                required: "Condition is required"
+                            })}
+                            className="input input-bordered w-full max-w-xs" />
+                        {errors.yearsOfUse && <p className='text-red-600'>{errors.yearsOfUse?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Mobile Number</span></label>
@@ -90,7 +99,7 @@ const AddAProduct = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Location</span></label>
-                        <input type="number"
+                        <input type="text"
                             {...register("location", {
                                 required: "Location is required"
                             })}
@@ -108,13 +117,13 @@ const AddAProduct = () => {
                         {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Price</span></label>
-                        <input type="text"
-                            {...register("description", {
+                        <label className="label"> <span className="label-text">Original Price</span></label>
+                        <input type="number"
+                            {...register("originalPrice", {
                                 required: " is required",
                             })}
                             className="input input-bordered w-full max-w-xs" />
-                        {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}
+                        {errors.originalPrice && <p className='text-red-600'>{errors.originalPrice?.message}</p>}
                     </div>
                     <input className='btn btn-accent w-full' value="Submit" type="submit" />
                 </form>
