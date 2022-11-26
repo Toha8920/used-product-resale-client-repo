@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -10,7 +11,13 @@ const SignUp = () => {
     const [signUpError, setSignUPError] = useState('');
 
     const handleSignUp = (data) => {
+        const user = {
+            name: data.name,
+            email: data.email,
+            role: data.role
+        }
         setSignUPError('');
+        axios.post('http://localhost:5000/users', user).then(res => console.log(res.data))
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -49,6 +56,15 @@ const SignUp = () => {
                             required: true
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <select className="select w-full max-w-xs select-bordered mt-5"  {...register("role", {
+                            required: "Product Category is required"
+                        })}>
+                            <option disabled selected>Select Account</option>
+                            <option value="user">User</option>
+                            <option value="seller">Seller</option>
+                        </select>
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Password</span></label>
