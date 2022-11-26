@@ -15,7 +15,7 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>About</Link></li>
-        <li><Link to='/dashboard'>dashboard</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         {
             user?.uid ? <li><Link onClick={handleSignOut} to='/login'>SignOut</Link></li>
                 :

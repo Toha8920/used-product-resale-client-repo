@@ -25,7 +25,7 @@ const AddAProduct = () => {
             values.date = moment().format('LL')
             axios.post('http://localhost:5000/products', values).then(data => {
                 if (data?.data.acknowledged === true) {
-                    toast('Upload success')
+                    toast.success('Upload success')
                     navigate('/dashboard/my-products')
                 }
             })
