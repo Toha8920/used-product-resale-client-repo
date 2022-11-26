@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const AddAProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -10,6 +11,7 @@ const AddAProduct = () => {
     const navigate = useNavigate()
     const handleLogin = (values) => {
         console.log(values);
+
         const image = values.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -20,7 +22,7 @@ const AddAProduct = () => {
         }).then(res => res.json()).then(imgData => {
             const imgUrl = imgData.data.url;
             values.imgURL = imgUrl;
-
+            values.date = moment().format('LL')
             axios.post('http://localhost:5000/products', values).then(data => {
                 if (data?.data.acknowledged === true) {
                     toast('Upload success')
@@ -30,6 +32,7 @@ const AddAProduct = () => {
 
 
         })
+
     }
 
     return (
