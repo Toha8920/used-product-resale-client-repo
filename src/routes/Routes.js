@@ -13,6 +13,7 @@ import MySellers from "../Pages/MySellers/MySellers";
 import MyWishList from "../Pages/MyWishList/MyWishList";
 import NotFound from "../Pages/NotFound/NotFound";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -36,9 +37,10 @@ export const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog></Blog>
             },
+
             {
                 path: '/categories/:categoryName',
-                element: <ProductDetails></ProductDetails>,
+                element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`http://localhost:5000/products/${params.categoryName}`)
                 }
