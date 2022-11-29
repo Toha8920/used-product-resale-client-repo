@@ -3,19 +3,19 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import AddAProduct from "../Pages/AddAProduct/AddAProduct";
 import Blog from "../Pages/Blog/Blog";
-import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../Pages/Home/Home/Home";
 import ProductDetails from "../Pages/Home/ProductCategories/ProductDetails/ProductDetails";
 import Login from "../Pages/Login/Login";
 import MakeAdmin from "../Pages/MakeAdmin/MakeAdmin";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
-import AllSellers from "../Pages/AllSellers/MySellers";
+// import AllSellers from "../Pages/AllSellers/AllSellers";
 import MyWishList from "../Pages/MyWishList/MyWishList";
 import NotFound from "../Pages/NotFound/NotFound";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AllBuyers from "../Pages/AllBuyers/AllBuyers";
+import AllSellers from "../Pages/MySellers/AllSellers";
 
 export const router = createBrowserRouter([
     {
@@ -64,8 +64,9 @@ export const router = createBrowserRouter([
             },
             { path: '/dashboard/my-products', element: <MyProducts /> }, {
                 path: '/dashboard/my-orders', element: <MyOrders />
-            }, {
-                path: '/dashboard/my-sellers', element: <AllSellers />
+            },
+            {
+                path: '/dashboard/my-sellers', element: <AllSellers></AllSellers>
             },
             {
                 path: '/dashboard/my-buyers', element: <AllBuyers />

@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../../context/AuthProvider';
 
 const ProductDetail = ({ productDetail, setCategoryName }) => {
-    const { imgURL, productName, location, resalePrice, originalPrice, yearsOfUse, date
+    const { name, imgURL, productName, location, resalePrice, originalPrice, yearsOfUse, date
     } = productDetail
     const { user } = useContext(AuthContext);
+    console.log(user)
     console.log(productDetail, 'erdf');
     return (
         <div className='mt-5'>
@@ -12,7 +13,7 @@ const ProductDetail = ({ productDetail, setCategoryName }) => {
                 <figure><img className='w-52 h-52' src={imgURL} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{productName}</h2>
-                    <p>Sellers Name: {user?.displayName}</p>
+                    <p>Sellers Name: {name}</p>
                     <p>Location: {location}</p>
                     <p>Original Price: {originalPrice}</p>
                     <p>Resale Price: {resalePrice}</p>

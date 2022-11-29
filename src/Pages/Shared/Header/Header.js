@@ -16,13 +16,12 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>About</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ? <li><Link onClick={handleSignOut} to='/login'>SignOut</Link></li>
                 :
                 <li><Link to='/login'>Login</Link></li>
         }
-        <li><Link to='/'>Contact Us</Link></li>
-        <li><Link to='/blog'>Blog</Link></li>
     </>
 
 

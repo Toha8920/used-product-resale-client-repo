@@ -3,14 +3,15 @@ import React from 'react';
 import Order from './Order';
 
 const MyOrders = () => {
-    const { data: orders = [], isLoading, refetch } = useQuery({
+    const { data: orders = [], isLoading, } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/myorders');
             const data = await res.json();
             return data;
         }
-    })
+    });
+
     if (isLoading) {
         return <div className='flex justify-center items-center'>
             <div class="flex justify-center items-center">
@@ -20,6 +21,7 @@ const MyOrders = () => {
             </div>
         </div>
     }
+
 
     return (
         <div className="overflow-x-auto w-full">
