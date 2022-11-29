@@ -5,6 +5,7 @@ const ProductDetail = ({ productDetail, setCategoryName }) => {
     const { imgURL, productName, location, resalePrice, originalPrice, yearsOfUse, date
     } = productDetail
     const { user } = useContext(AuthContext);
+    console.log(productDetail, 'erdf');
     return (
         <div className='mt-5'>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">

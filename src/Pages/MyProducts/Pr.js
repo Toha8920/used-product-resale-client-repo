@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Pr = ({ product, handleDelete }) => {
+const Pr = ({ product, handleDelete, handleAdvertise }) => {
     const { _id, imgURL, productName, resalePrice, yearsOfUse } = product;
     console.log(product)
     return (
@@ -23,6 +23,9 @@ const Pr = ({ product, handleDelete }) => {
             <td>{resalePrice}</td>
             <th>
                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
+            </th>
+            <th>
+                <button onClick={() => handleAdvertise(_id)} className="btn btn-ghost btn-xs">Advertise</button>
             </th>
         </tr>
     );

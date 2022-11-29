@@ -7,13 +7,15 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../Pages/Home/Home/Home";
 import ProductDetails from "../Pages/Home/ProductCategories/ProductDetails/ProductDetails";
 import Login from "../Pages/Login/Login";
+import MakeAdmin from "../Pages/MakeAdmin/MakeAdmin";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import MyProducts from "../Pages/MyProducts/MyProducts";
-import MySellers from "../Pages/MySellers/MySellers";
+import AllSellers from "../Pages/AllSellers/MySellers";
 import MyWishList from "../Pages/MyWishList/MyWishList";
 import NotFound from "../Pages/NotFound/NotFound";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AllBuyers from "../Pages/AllBuyers/AllBuyers";
 
 export const router = createBrowserRouter([
     {
@@ -66,10 +68,16 @@ export const router = createBrowserRouter([
             { path: '/dashboard/my-products', element: <MyProducts /> }, {
                 path: '/dashboard/my-orders', element: <MyOrders />
             }, {
-                path: '/dashboard/my-sellers', element: <MySellers />
+                path: '/dashboard/my-sellers', element: <AllSellers />
+            },
+            {
+                path: '/dashboard/my-buyers', element: <AllBuyers />
             },
             {
                 path: '/dashboard/my-wishlist', element: <MyWishList />
+            },
+            {
+                path: '/dashboard/make-admin', element: <MakeAdmin />
             },
         ]
     }

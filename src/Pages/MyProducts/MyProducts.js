@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query'
 import Pr from './Pr'
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthProvider';
 const MyProducts = () => {
-
+    const { user } = useContext(AuthContext)
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -12,7 +13,8 @@ const MyProducts = () => {
             return data;
         }
     })
-
+    const productsByEmail = products.filter(p => p.email === user?.email)
+    console.log(productsByEmail, 'email');
     const handleDelete = (_id) => {
         fetch(`http://localhost:5000/products/${_id}`, {
             method: 'DELETE',
@@ -25,7 +27,18 @@ const MyProducts = () => {
                 }
             })
     }
-
+    const handleAdvertise = (_id) => {
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PATCH',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Advertisement successfully')
+                    refetch();
+                }
+            })
+    }
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -37,15 +50,20 @@ const MyProducts = () => {
                             <th>Years Of Use</th>
                             <th>Resale Price</th>
                             <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            products.map(product => <Pr
-                                product={product}
-                                key={product._id}
-                                handleDelete={handleDelete}
-                            ></Pr>)
+                            productsByEmail.map(product => <>
+                                <Pr
+                                    product={product}
+                                    key={product._id}
+                                    handleDelete={handleDelete}
+                                    handleAdvertise={handleAdvertise}
+                                ></Pr>
+
+                            </>)
                         }
                     </tbody>
 

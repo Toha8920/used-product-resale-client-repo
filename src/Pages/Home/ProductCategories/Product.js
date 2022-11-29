@@ -12,6 +12,7 @@ const Product = ({ product }) => {
                     <button className="btn btn-primary"><Link to={`/categories/${categoryName.split(' ')[0]}`}>Details</Link></button>
                 </div>
             </div>
+
         </div>
     );
 };

@@ -1,17 +1,20 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { AuthContext } from '../../context/AuthProvider';
 
 const AddAProduct = () => {
+    const { user } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imgKey = process.env.REACT_APP_img_HOST_key;
     const navigate = useNavigate()
     const handleLogin = (values) => {
         console.log(values);
-
+        values.name = user.displayName
+        values.email = user.email
         const image = values.image[0];
         const formData = new FormData();
         formData.append('image', image);
