@@ -26,14 +26,12 @@ const AddAProduct = () => {
             const imgUrl = imgData.data.url;
             values.imgURL = imgUrl;
             values.date = moment().format('LL')
-            axios.post('http://localhost:5000/products', values).then(data => {
+            axios.post('https://used-products-resale-server-lake.vercel.app/products', values).then(data => {
                 if (data?.data.acknowledged === true) {
                     toast.success('Upload success')
                     navigate('/dashboard/my-products')
                 }
             })
-
-
         })
 
     }

@@ -16,6 +16,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AllBuyers from "../Pages/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/MySellers/AllSellers";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ export const router = createBrowserRouter([
                 path: '/categories/:categoryName',
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/products/${params.categoryName}`)
+                    return fetch(`https://used-products-resale-server-lake.vercel.app/products/${params.categoryName}`)
                 }
             },
             {
@@ -55,9 +56,13 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
+        errorElement: <NotFound></NotFound>,
         element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
-
+            {
+                index: true,
+                element: <Dashboard></Dashboard>
+            },
             {
                 path: '/dashboard/add-product', element: <AddAProduct />
 

@@ -26,7 +26,7 @@ const BookingModal = ({ categoryName }) => {
             location
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://used-products-resale-server-lake.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -21,7 +21,7 @@ const SignUp = () => {
             role: data.role
         }
         setSignUPError('');
-        axios.post('http://localhost:5000/users', user).then(res => console.log(res.data))
+        axios.post('https://used-products-resale-server-lake.vercel.app/users', user).then(res => console.log(res.data))
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;

@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../context/AuthProvider';
 
 const ProductDetail = ({ productDetail, setCategoryName }) => {
     const { name, imgURL, productName, location, resalePrice, originalPrice, yearsOfUse, date
-    } = productDetail
+        , isVerified } = productDetail
     const { user } = useContext(AuthContext);
     console.log(user)
     console.log(productDetail, 'erdf');
@@ -13,7 +13,7 @@ const ProductDetail = ({ productDetail, setCategoryName }) => {
                 <figure><img className='w-52 h-52' src={imgURL} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{productName}</h2>
-                    <p>Sellers Name: {name}</p>
+                    <p>Sellers Name: {name} {isVerified && <span>&#9989;</span>}</p>
                     <p>Location: {location}</p>
                     <p>Original Price: {originalPrice}</p>
                     <p>Resale Price: {resalePrice}</p>

@@ -8,7 +8,7 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+            const res = await fetch('https://used-products-resale-server-lake.vercel.app/products');
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const MyProducts = () => {
     const productsByEmail = products.filter(p => p.email === user?.email)
     console.log(productsByEmail, 'email');
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://used-products-resale-server-lake.vercel.app/products/${_id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const MyProducts = () => {
             })
     }
     const handleAdvertise = (_id) => {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://used-products-resale-server-lake.vercel.app/products/${_id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())
@@ -49,8 +49,10 @@ const MyProducts = () => {
                             <th>Image</th>
                             <th>Years Of Use</th>
                             <th>Resale Price</th>
+                            <th>Status</th>
                             <th>Action</th>
                             <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>

@@ -31,7 +31,24 @@ const Login = () => {
         googleSingIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
+                const userInfo = {
+                    name: user.displayName,
+                    email: user.email,
+                    role: 'user'
+                }
+                fetch('https://used-products-resale-server-lake.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(err => console.log(err))
     }

@@ -6,7 +6,7 @@ const useRole = (email) => {
     const [allRole, setAllRole] = useState('user')
     const [roleLoading, setRoleLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${email}`).then(res => res.json()).then(data => {
+        fetch(`https://used-products-resale-server-lake.vercel.app/users/${email}`).then(res => res.json()).then(data => {
             setRoleLoading(false)
             setAllRole(data)
         })

@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 
 const AllSellers = () => {
     const { data: users, isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://used-products-resale-server-lake.vercel.app/users');
             const data = await res.json();
             return (data);
         }
@@ -23,7 +24,7 @@ const AllSellers = () => {
     console.log(sellers);
 
     const handleDelte = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://used-products-resale-server-lake.vercel.app/users/${id}`, {
             method: 'DELETE'
         })
             // .then(res => res.json())
@@ -33,11 +34,19 @@ const AllSellers = () => {
             })
     }
 
+    const handleVerified = (email) => {
+        axios.patch(`https://used-products-resale-server-lake.vercel.app/products/${email}`)
+            .then(res => { console.log(res.data) })
+
+    }
+
     return (
         <div>
             <h1 className='text-2xl mb-3'>My Sellers</h1>
             {sellers?.map(seller => <>
                 <p className='border rounded text-xl'>{seller.email}</p>
+                <button onClick={() => handleVerified(seller.email)}>Verify</button>
+                <br />
                 <button onClick={() => handleDelte(seller._id)}>Delete</button>
             </>)}
         </div>

@@ -21,6 +21,7 @@ const Pr = ({ product, handleDelete, handleAdvertise }) => {
                 {yearsOfUse}
             </td>
             <td>{resalePrice}</td>
+            <td>Available</td>
             <th>
                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
             </th>
